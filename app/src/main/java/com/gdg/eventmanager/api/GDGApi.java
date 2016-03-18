@@ -20,20 +20,47 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class GDGApi {
 
     public static final String BASE_URL = "http://emjuizdefora.com/gdgjf/api/";
+    private static final String X_API_USER_ID = "X-API-USER-ID";
+    private static final String X_API_TOKEN = "X-API-TOKEN";
 
     private static GDGApi sInstance;
+    private SharedPreferences mPreferences;
     private Retrofit mRetrofit;
 
-    private GDGApi() {
+    private GDGApi(Context context) {
+        mPreferences = context.getSharedPreferences(PreferencesConstants.PREFS_NAME_USER,
+                Context.MODE_PRIVATE);
+        OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request();
+
+                if (mPreferences.contains(PreferencesConstants.API_MD5)
+                        && mPreferences.contains(PreferencesConstants.USER_ID)) {
+                    int userId = mPreferences.getInt(PreferencesConstants.USER_ID, 0);
+                    String apiMd5 = mPreferences.getString(PreferencesConstants.API_MD5, "");
+
+                    request.newBuilder()
+                            .addHeader(X_API_USER_ID, String.valueOf(userId))
+                            .addHeader(X_API_TOKEN, apiMd5)
+                            .build();
+                }
+
+                Response response = chain.proceed(request);
+                return response;
+            }
+        }).build();
+
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
                 .build();
     }
 
-    public static void init() {
+    public static void init(Context context) {
         if (sInstance == null) {
-            sInstance = new GDGApi();
+            sInstance = new GDGApi(context);
         }
     }
 

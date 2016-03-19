@@ -2,14 +2,53 @@
 <resources>
 
     <!-- base colors -->
+    <color name="zero_1">#FFFFFF</color>
+    <color name="zero_2">#ECEFF1</color>
+    <color name="zero_3">#90A4AE</color>
+    <color name="zero_4">#607D8B</color>
+    <color name="zero_5">#455A64</color>
+    <color name="zero_6">#263238</color>
+    <color name="zero_7">#000000</color>
+
+    <color name="one_1">#98BEFE</color>
+    <color name="one_2">#4489FF</color>
+    <color name="one_3">#186DFF</color>
+    <!--<color name="one_1">#4489FF</color>-->
+    <!--<color name="one_2">#2872E0</color>-->
+    <!--<color name="one_3">#3F51B5</color>-->
+    <color name="one_4">#303F9F</color>
+
+    <color name="two_1">#FFD68D</color>
+    <color name="two_2">#FFB530</color>
+    <color name="two_3">#FFA400</color>
+    <!--<color name="two_1">#DA4439</color>-->
+
+    <color name="three_1">#02944E</color>
+
+    <!--<color name="four_1">#F8C53C</color>-->
+    <!--<color name="four_1">#FFC55C</color>-->
+    <!--<color name="four_2">#FFB530</color>-->
+    <!--<color name="four_3">#FFA400</color>-->
+
+    <color name="colorPrimary">@color/one_2</color>
+    <color name="colorPrimaryDark">@color/one_3</color>
+    <color name="colorAccent">@color/two_2</color>
+    <color name="colorAccentDark">@color/two_3</color>
+
+    <!-- base colors -->
     <color name="blue2">#2872E0</color>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
 
     <!-- base -->
     <color name="splashBackground">@color/blue2</color>
+    <color name="text_input_layout_hint">@color/zero_4</color>
+    <color name="text_input_layout_hint_active">@color/one_4</color>
+    <color name="text_input_layout_underline">@color/zero_4</color>
+    <color name="text_input_layout_underline_activated">@color/one_4</color>
+    <color name="edit_text_text">@color/zero_6</color>
 
     <!-- login -->
 

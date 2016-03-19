@@ -12,4 +12,32 @@
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
 
+    <style name="TextAppearance.TextInputLayout.Hint" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_input_layout_hint_active</item>
+        <item name="android:textSize">@dimen/text_input_layout_hint</item>
+    </style>
+
+    <style name="TextInputLayoutTheme">
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:textColorHint">@color/text_input_layout_hint</item>
+        <item name="colorControlNormal">@color/text_input_layout_underline</item>
+        <item name="colorControlActivated">@color/text_input_layout_underline_activated</item>
+    </style>
+
+    <style name="TextInputLayout" parent="Widget.Design.TextInputLayout">
+        <item name="android:textSize">@dimen/text_input_layout_hint</item>
+        <item name="android:paddingTop">4dp</item>
+
+        <item name="hintTextAppearance">@style/TextAppearance.TextInputLayout.Hint</item>
+        <item name="android:theme">@style/TextInputLayoutTheme</item>
+    </style>
+
+    <style name="EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/edit_text_text</item>
+        <item name="android:textSize">@dimen/edit_text_text</item>
+    </style>
+
 </resources>

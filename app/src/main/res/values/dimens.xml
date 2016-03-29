@@ -4,6 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- base -->
-    <dimen name="text_input_layout_hint">14dp</dimen>
-    <dimen name="edit_text_text">16dp</dimen>
+    <dimen name="til_hint_text">14dp</dimen>
+    <dimen name="til_error_text">14dp</dimen>
+    <dimen name="et_text">16dp</dimen>
 </resources>

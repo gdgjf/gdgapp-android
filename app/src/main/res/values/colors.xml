@@ -25,6 +25,10 @@
 
     <color name="three_1">#02944E</color>
 
+    <color name="four_1">#FFCDD2</color>
+    <color name="four_2">#F44336</color>
+    <color name="four_3">#B71C1C</color>
+
     <!--<color name="four_1">#F8C53C</color>-->
     <!--<color name="four_1">#FFC55C</color>-->
     <!--<color name="four_2">#FFB530</color>-->
@@ -44,6 +48,7 @@
 
     <!-- base -->
     <color name="splashBackground">@color/blue2</color>
+    <color name="text_input_layout_error">@color/four_2</color>
     <color name="text_input_layout_hint">@color/zero_4</color>
     <color name="text_input_layout_hint_active">@color/one_4</color>
     <color name="text_input_layout_underline">@color/zero_4</color>
@@ -54,6 +59,7 @@
 
 
 
+    <!-- old -->
     <color name="textColorPrimary">#727272</color>
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>

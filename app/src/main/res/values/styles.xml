@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -14,7 +14,13 @@
 
     <style name="TextAppearance.TextInputLayout.Hint" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@color/text_input_layout_hint_active</item>
-        <item name="android:textSize">@dimen/text_input_layout_hint</item>
+        <item name="android:textSize">@dimen/til_hint_text</item>
+    </style>
+
+    <style name="TextAppearance.TextInputLayout.Error" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_input_layout_error</item>
+        <item name="android:textSize">@dimen/til_error_text</item>
+        <item name="android:background">#0f0</item>
     </style>
 
     <style name="TextInputLayoutTheme">
@@ -25,10 +31,11 @@
     </style>
 
     <style name="TextInputLayout" parent="Widget.Design.TextInputLayout">
-        <item name="android:textSize">@dimen/text_input_layout_hint</item>
+        <item name="android:textSize">@dimen/til_hint_text</item>
         <item name="android:paddingTop">4dp</item>
 
         <item name="hintTextAppearance">@style/TextAppearance.TextInputLayout.Hint</item>
+        <item name="errorTextAppearance">@style/TextAppearance.TextInputLayout.Error</item>
         <item name="android:theme">@style/TextInputLayoutTheme</item>
     </style>
 
@@ -37,7 +44,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:singleLine">true</item>
         <item name="android:textColor">@color/edit_text_text</item>
-        <item name="android:textSize">@dimen/edit_text_text</item>
+        <item name="android:textSize">@dimen/et_text</item>
     </style>
 
 </resources>

@@ -34,3 +34,5 @@ captures/
 # JetBrains project
 .idea/
 *.iml
+
+.DS_Store

@@ -54,6 +54,8 @@
     <color name="text_input_layout_underline">@color/zero_4</color>
     <color name="text_input_layout_underline_activated">@color/one_4</color>
     <color name="edit_text_text">@color/zero_6</color>
+    <!-- button -->
+    <color name="button_one_bg">@color/two_2</color>
 
     <!-- login -->
 

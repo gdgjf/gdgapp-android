@@ -3,7 +3,9 @@ package com.gdg.eventmanager.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.gdg.eventmanager.model.User;
 import com.gdg.eventmanager.util.PreferencesConstants;
+import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
@@ -11,6 +13,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -25,7 +28,7 @@ public class GDGApi {
 
     private static GDGApi sInstance;
     private SharedPreferences mPreferences;
-    private Retrofit mRetrofit;
+    private GDGService mService;
 
     private GDGApi(Context context) {
         mPreferences = context.getSharedPreferences(PreferencesConstants.PREFS_NAME_USER,
@@ -51,11 +54,12 @@ public class GDGApi {
             }
         }).build();
 
-        mRetrofit = new Retrofit.Builder()
+        Retrofit mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
+        mService = mRetrofit.create(GDGService.class);
     }
 
     public static void init(Context context) {
@@ -66,6 +70,10 @@ public class GDGApi {
 
     public static GDGApi getInstance() {
         return sInstance;
+    }
+
+    public Call<User> authenticate(String email, String password) {
+        return mService.authenticate(email, password);
     }
 
 }

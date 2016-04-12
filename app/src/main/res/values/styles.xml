@@ -47,4 +47,10 @@
         <item name="android:textSize">@dimen/et_text</item>
     </style>
 
+    <style name="Button.One" parent="Base.Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/button_one_bg</item>
+    </style>
+
 </resources>

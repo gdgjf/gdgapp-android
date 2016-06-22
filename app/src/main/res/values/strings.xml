@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">GDG JF</string>
 
+    <!--activity title-->
+    <string name="title_main">GDG JF</string>
+
     <!-- buttons -->
     <string name="btn_login">login</string>
+
+    <!--tab title-->
+    <string name="tab_events">Events</string>
+    <string name="tab_gamification">Gamefication</string>
+    <string name="tab_schedule">Schedule</string>
 </resources>

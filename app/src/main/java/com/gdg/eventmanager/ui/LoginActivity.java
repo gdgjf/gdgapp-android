@@ -4,13 +4,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
 import android.text.TextUtils;
-import android.view.View;
 
 import com.gdg.eventmanager.R;
 import com.gdg.eventmanager.api.GDGApi;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -18,19 +16,26 @@ import butterknife.OnClick;
  */
 public class LoginActivity extends BaseActivity {
 
-    @Bind(R.id.login_til_email)
+    @BindView(R.id.login_til_email)
     TextInputLayout tilEmail;
-    @Bind(R.id.login_til_password)
+    @BindView(R.id.login_til_password)
     TextInputLayout tilPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         GDGApi.init(this);
+        super.onCreate(savedInstanceState);
+    }
 
-        ButterKnife.bind(this);
+    @Override
+    public int getContentView() {
+        return R.layout.activity_login;
+    }
+
+    @Override
+    public boolean hasBackButton() {
+        return false;
     }
 
     @OnClick(R.id.login_btn_login)

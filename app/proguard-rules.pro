@@ -22,6 +22,11 @@
 -keepattributes Signature
 -keepattributes Exceptions
 
+# logan square
+-keep class com.bluelinelabs.logansquare.** { *; }
+-keep @com.bluelinelabs.logansquare.annotation.JsonObject class *
+-keep class **$$JsonObjectMapper { *; }
+
 # Butterknife
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**

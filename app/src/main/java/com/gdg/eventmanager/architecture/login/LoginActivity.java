@@ -1,6 +1,5 @@
 package com.gdg.eventmanager.architecture.login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
@@ -37,7 +36,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
         ButterKnife.bind(this);
 
         tilEmail.getEditText().setText("braga.atila@gmail.com");
-        tilEmail.getEditText().setText("123456");
+        tilPassword.getEditText().setText("123456");
 
         presenter = new LoginPresenterImpl(this);
     }
@@ -51,8 +50,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void startMain() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        startActivity(intent);
+        MainActivity.start(LoginActivity.this);
     }
 
     @Override

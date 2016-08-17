@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity"
+        <activity android:name="com.gdg.eventmanager.architecture.main.MainActivity"
             android:theme="@style/AppTheme"/>
     </application>
 

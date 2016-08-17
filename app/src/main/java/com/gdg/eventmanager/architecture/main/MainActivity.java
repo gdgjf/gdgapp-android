@@ -26,6 +26,7 @@ public class MainActivity extends BaseActivity {
     TabLayout tab;
     @BindView(R.id.main_view_pager)
     ViewPager viewPager;
+    MainPagerAdapter adapter;
 
     public static void start(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -41,6 +42,8 @@ public class MainActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(R.string.title_main);
 
+        adapter = new MainPagerAdapter(MainActivity.this, getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
         tab.setupWithViewPager(viewPager);
     }
 }

@@ -3,6 +3,9 @@
 
     <!--activity title-->
     <string name="title_main">GDG JF</string>
+    <string name="title_tab_events">Events</string>
+    <string name="title_tab_gamification">Gamefication</string>
+    <string name="title_tab_schedule">Schedule</string>
 
     <!-- buttons -->
     <string name="btn_login">login</string>

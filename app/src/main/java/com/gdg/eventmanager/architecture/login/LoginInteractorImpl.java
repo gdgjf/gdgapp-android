@@ -5,15 +5,12 @@ import android.util.Log;
 import com.bluelinelabs.logansquare.LoganSquare;
 import com.gdg.eventmanager.api.GDGApi;
 import com.gdg.eventmanager.architecture.GDGCallback;
-import com.gdg.eventmanager.architecture.main.MainActivity;
 import com.gdg.eventmanager.model.User;
 import com.google.gson.JsonElement;
 
 import java.io.IOException;
 
 import retrofit2.Call;
-
-import static android.os.Build.VERSION_CODES.M;
 
 /**
  * Created by atilabraga on 8/10/16.
@@ -22,17 +19,17 @@ import static android.os.Build.VERSION_CODES.M;
 public class LoginInteractorImpl implements LoginInteractor {
 
     @Override
-    public void autenticate(String user, String password, OnLoginListener listener) {
+    public void autenticate(String user, String password, final OnLoginListener listener) {
         GDGCallback<JsonElement> callback = new GDGCallback<JsonElement>() {
             @Override
             public void onSuccess(Call<JsonElement> call, JsonElement data) {
                 User user = null;
                 try {
-                    user = LoganSquare.parse(data.getAsString(), User.class);
+                    user = LoganSquare.parse(data.toString(), User.class);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                MainActivity.start();
+                listener.onSuccess(user);
             }
 
             @Override

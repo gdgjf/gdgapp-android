@@ -3,9 +3,10 @@ package com.gdg.eventmanager.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.gdg.eventmanager.model.User;
 import com.gdg.eventmanager.util.PreferencesConstants;
-import com.google.gson.JsonObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 
 import java.io.IOException;
 
@@ -29,6 +30,8 @@ public class GDGApi {
     private static GDGApi sInstance;
     private SharedPreferences mPreferences;
     private GDGService mService;
+    private Gson gson = new GsonBuilder()
+            .create();
 
     private GDGApi(Context context) {
         mPreferences = context.getSharedPreferences(PreferencesConstants.PREFS_NAME_USER,
@@ -37,14 +40,15 @@ public class GDGApi {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-
+                Request.Builder builder = request.newBuilder();
+                builder.addHeader("Content-Type", "application/json;charset=UTF-8");
+                builder.addHeader("Accept", "application/json");
                 if (mPreferences.contains(PreferencesConstants.API_MD5)
                         && mPreferences.contains(PreferencesConstants.USER_ID)) {
                     int userId = mPreferences.getInt(PreferencesConstants.USER_ID, 0);
                     String apiMd5 = mPreferences.getString(PreferencesConstants.API_MD5, "");
 
-                    request.newBuilder()
-                            .addHeader(X_API_USER_ID, String.valueOf(userId))
+                    builder.addHeader(X_API_USER_ID, String.valueOf(userId))
                             .addHeader(X_API_TOKEN, apiMd5)
                             .build();
                 }
@@ -72,7 +76,7 @@ public class GDGApi {
         return sInstance;
     }
 
-    public Call<User> authenticate(String email, String password) {
+    public Call<JsonElement> authenticate(String email, String password) {
         return mService.authenticate(email, password);
     }
 

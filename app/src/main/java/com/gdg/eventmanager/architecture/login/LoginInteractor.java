@@ -1,5 +1,7 @@
 package com.gdg.eventmanager.architecture.login;
 
+import com.gdg.eventmanager.model.User;
+
 /**
  * Created by atilabraga on 8/10/16.
  */
@@ -7,9 +9,9 @@ package com.gdg.eventmanager.architecture.login;
 public interface LoginInteractor {
 
     interface OnLoginListener {
-        void onSuccess();
+        void onSuccess(User user);
     }
 
-    void login(String user, String password, OnLoginListener listener);
+    void autenticate(String user, String password, OnLoginListener listener);
 
 }

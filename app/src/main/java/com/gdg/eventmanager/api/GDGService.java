@@ -1,14 +1,14 @@
 package com.gdg.eventmanager.api;
 
 import com.gdg.eventmanager.model.Event;
-import com.gdg.eventmanager.model.User;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
@@ -18,10 +18,11 @@ import retrofit2.http.Path;
  */
 public interface GDGService {
 
-    @POST("autenticar/")
-    Call<User> authenticate(@Field("email") String email, @Field("password") String password);
+    @FormUrlEncoded
+    @POST("autenticar")
+    Call<JsonElement> authenticate(@Field("email") String email, @Field("password") String password);
 
-    @POST("eventos/")
+    @POST("eventos")
     Call<List<Event>> events();
 
     @POST("evento/{id}")

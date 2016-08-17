@@ -6,6 +6,8 @@ package com.gdg.eventmanager.architecture.login;
 
 public interface LoginView {
 
+    void startMain();
+
     void display();
 
     void showProgress();

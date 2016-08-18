@@ -25,7 +25,10 @@ public class LoginInteractorImpl implements LoginInteractor {
             public void onSuccess(Call<JsonElement> call, JsonElement data) {
                 User user = null;
                 try {
-                    user = LoganSquare.parse(data.toString(), User.class);
+                    JsonElement userJson = data.getAsJsonObject().get("pessoa");
+                    if (userJson != null) {
+                        user = LoganSquare.parse(userJson.toString(), User.class);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

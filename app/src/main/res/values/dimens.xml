@@ -7,4 +7,8 @@
     <dimen name="til_hint_text">14dp</dimen>
     <dimen name="til_error_text">14dp</dimen>
     <dimen name="et_text">16dp</dimen>
+
+    <!--event list item-->
+    <dimen name="event_item_banner_height">124dp</dimen>
+
 </resources>

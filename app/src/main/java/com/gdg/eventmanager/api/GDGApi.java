@@ -3,7 +3,11 @@ package com.gdg.eventmanager.api;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.bluelinelabs.logansquare.LoganSquare;
+import com.gdg.eventmanager.architecture.DateOnlyDateConverter;
+import com.gdg.eventmanager.architecture.UserValidationTypeConverter;
 import com.gdg.eventmanager.model.Event;
+import com.gdg.eventmanager.model.UserValidationType;
 import com.gdg.eventmanager.util.PreferencesConstants;
 import com.github.aurae.retrofit2.LoganSquareConverterFactory;
 import com.google.gson.Gson;
@@ -11,6 +15,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import okhttp3.Interceptor;
@@ -69,6 +74,9 @@ public class GDGApi {
                 })
                 .build();
 
+        LoganSquare.registerTypeConverter(Date.class, new DateOnlyDateConverter());
+        LoganSquare.registerTypeConverter(UserValidationType.class, new UserValidationTypeConverter());
+
         Retrofit mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(LoganSquareConverterFactory.create())
@@ -94,6 +102,10 @@ public class GDGApi {
 
     public Call<List<Event>> getEvents() {
         return mService.events();
+    }
+
+    public Call<Event> getEvent(long id) {
+        return mService.event(id);
     }
 
 }

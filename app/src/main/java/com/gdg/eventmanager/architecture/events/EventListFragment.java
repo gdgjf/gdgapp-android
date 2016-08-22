@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gdg.eventmanager.R;
+import com.gdg.eventmanager.architecture.event.EventDetailActivity;
 import com.gdg.eventmanager.model.Event;
 import com.gdg.eventmanager.ui.fragment.BaseFragment;
 
@@ -23,7 +24,8 @@ import butterknife.ButterKnife;
  * Created by atilabraga on 8/18/16.
  */
 
-public class EventListFragment extends BaseFragment implements EventListView, SwipeRefreshLayout.OnRefreshListener {
+public class EventListFragment extends BaseFragment implements EventListView, SwipeRefreshLayout.OnRefreshListener,
+        EventAdapter.OnEventClickListener{
 
     @BindView(R.id.event_list_srv_swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
@@ -46,6 +48,7 @@ public class EventListFragment extends BaseFragment implements EventListView, Sw
 
         mSwipeRefresh.setOnRefreshListener(this);
         adapter = new EventAdapter(null);
+        adapter.setListener(this);
         rvEvents.setAdapter(adapter);
         rvEvents.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL,
                 false));
@@ -79,5 +82,22 @@ public class EventListFragment extends BaseFragment implements EventListView, Sw
     @Override
     public void onRefresh() {
         presenter.getEvents();
+    }
+
+    @Override
+    public void onEventClick(Event event) {
+        if (event != null) {
+            EventDetailActivity.start(getActivity(), event.getId());
+        }
+    }
+
+    @Override
+    public void onScheduleClick(Event event) {
+
+    }
+
+    @Override
+    public void onShareClick(Event event) {
+
     }
 }

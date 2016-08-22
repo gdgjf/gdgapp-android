@@ -75,13 +75,21 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         ImageView ivSchedule;
         @BindView(R.id.event_item_iv_share)
         ImageView ivShare;
+        View itemView;
 
         public EventViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.itemView = itemView;
         }
 
         void bind(final Event event) {
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listener.onEventClick(event);
+                }
+            });
             tvName.setText(event.getTitle());
             ivSchedule.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -92,7 +100,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             ivShare.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onScheduleClick(event);
+                    listener.onShareClick(event);
                 }
             });
         }

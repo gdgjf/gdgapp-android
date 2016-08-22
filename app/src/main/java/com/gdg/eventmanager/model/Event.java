@@ -2,6 +2,7 @@ package com.gdg.eventmanager.model;
 
 import com.bluelinelabs.logansquare.annotation.JsonField;
 import com.bluelinelabs.logansquare.annotation.JsonObject;
+import com.gdg.eventmanager.architecture.DateOnlyDateConverter;
 
 import java.util.Date;
 import java.util.List;
@@ -42,7 +43,7 @@ public class Event {
     long id;
     @JsonField(name = Constants.TITULO)
     String title;
-    @JsonField(name = Constants.DATA)
+    @JsonField(name = Constants.DATA, typeConverter = DateOnlyDateConverter.class)
     Date date;
     @JsonField(name = Constants.PAGO)
     boolean paid;
@@ -83,13 +84,18 @@ public class Event {
     @JsonField(name = Constants.PERMITE_PRESENCA)
     boolean allowPresent;
     @JsonField(name = Constants.VALIDACAO_PESSOA)
-    UserValidationType validationType;
+    String validationType;
+//    UserValidationType validationType;
     @JsonField(name = Constants.FILA_ESPERA)
     boolean waitQueue;
     @JsonField(name = Constants.PRECOS)
     List<Price> prices;
     @JsonField(name = Constants.VALOR_PAGO)
     float paidValue;
+
+    public long getId() {
+        return id;
+    }
 
     public String getTitle() {
         return title;
@@ -175,7 +181,7 @@ public class Event {
         return allowPresent;
     }
 
-    public UserValidationType getValidationType() {
+    public String getValidationType() {
         return validationType;
     }
 

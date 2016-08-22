@@ -13,14 +13,14 @@ public class Price {
     }
 
     @SerializedName(Constants.ID)
-    private long id;
+    long id;
     @SerializedName(Constants.TITULO)
-    private String title;
+    String title;
     @SerializedName(Constants.VALOR)
-    private float value;
+    float value;
     @SerializedName(Constants.QTD_CONFIRMADOS)
-    private int numConfirmed;
+    int numConfirmed;
     @SerializedName(Constants.VALOR_PAGO)
-    private float paidValue;
+    float paidValue;
 
 }

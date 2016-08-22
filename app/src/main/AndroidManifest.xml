@@ -21,6 +21,9 @@
 
         <activity android:name="com.gdg.eventmanager.architecture.main.MainActivity"
             android:theme="@style/AppTheme"/>
+
+        <activity android:name="com.gdg.eventmanager.architecture.event.EventDetailActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

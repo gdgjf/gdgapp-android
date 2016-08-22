@@ -26,7 +26,7 @@ public interface GDGService {
     Call<List<Event>> events();
 
     @GET("evento/{id}")
-    Call<Event> event(@Path("id") String id);
+    Call<Event> event(@Path("id") long id);
 
     @GET("inscricao/{id}")
     Call<JsonObject> registration(@Path("id") String id);

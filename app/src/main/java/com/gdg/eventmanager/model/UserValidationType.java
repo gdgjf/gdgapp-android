@@ -5,6 +5,12 @@ package com.gdg.eventmanager.model;
  */
 public enum UserValidationType {
 
+    EMAIL("email");
 
+    String value;
+
+    UserValidationType(String value) {
+        this.value = value;
+    }
 
 }

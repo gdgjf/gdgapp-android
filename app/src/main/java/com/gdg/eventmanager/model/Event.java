@@ -91,4 +91,103 @@ public class Event {
     @JsonField(name = Constants.VALOR_PAGO)
     float paidValue;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public boolean isPaid() {
+        return paid;
+    }
+
+    public boolean isRealised() {
+        return realised;
+    }
+
+    public boolean isHappening() {
+        return happening;
+    }
+
+    public boolean isFuture() {
+        return future;
+    }
+
+    public boolean isHappendTwoDays() {
+        return happendTwoDays;
+    }
+
+    public boolean isBeginsTwoHours() {
+        return beginsTwoHours;
+    }
+
+    public int getVacancy() {
+        return vacancy;
+    }
+
+    public int getNumRegistered() {
+        return numRegistered;
+    }
+
+    public int getNumConfirmed() {
+        return numConfirmed;
+    }
+
+    public int getVacancyAvailable() {
+        return vacancyAvailable;
+    }
+
+    public int getNumPreRegistered() {
+        return numPreRegistered;
+    }
+
+    public int getNumNotConfirmed() {
+        return numNotConfirmed;
+    }
+
+    public int getNumCanceled() {
+        return numCanceled;
+    }
+
+    public int getNumNewRegistered() {
+        return numNewRegistered;
+    }
+
+    public int getNumPresent() {
+        return numPresent;
+    }
+
+    public int getNumWaitQueue() {
+        return numWaitQueue;
+    }
+
+    public boolean isAllowRegistration() {
+        return allowRegistration;
+    }
+
+    public boolean isAllowConfirmation() {
+        return allowConfirmation;
+    }
+
+    public boolean isAllowPresent() {
+        return allowPresent;
+    }
+
+    public UserValidationType getValidationType() {
+        return validationType;
+    }
+
+    public boolean isWaitQueue() {
+        return waitQueue;
+    }
+
+    public List<Price> getPrices() {
+        return prices;
+    }
+
+    public float getPaidValue() {
+        return paidValue;
+    }
 }

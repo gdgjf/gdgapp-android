@@ -22,10 +22,10 @@ public interface GDGService {
     @POST("autenticar")
     Call<JsonElement> authenticate(@Field("email") String email, @Field("password") String password);
 
-    @POST("eventos")
+    @GET("eventos")
     Call<List<Event>> events();
 
-    @POST("evento/{id}")
+    @GET("evento/{id}")
     Call<Event> event(@Path("id") String id);
 
     @GET("inscricao/{id}")

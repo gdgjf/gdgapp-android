@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.gdg.eventmanager.R;
+import com.gdg.eventmanager.architecture.events.EventListFragment;
 
 /**
  * Created by atilabraga on 8/17/16.
@@ -15,9 +16,9 @@ import com.gdg.eventmanager.R;
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
     enum Page {
-        EVENTS(POSITION_EVENTS, R.string.title_tab_events, new Fragment()),
-        GAMEFICATION(POSITION_GAMEFICATION, R.string.title_tab_events, new Fragment()),
-        SCHEDULE(POSITION_SCHEDULE, R.string.title_tab_events, new Fragment());
+        EVENTS(POSITION_EVENTS, R.string.title_tab_events, EventListFragment.newInstance()),
+        GAMEFICATION(POSITION_GAMEFICATION, R.string.title_tab_events, EventListFragment.newInstance()),
+        SCHEDULE(POSITION_SCHEDULE, R.string.title_tab_events, EventListFragment.newInstance());
 
         int position;
         int titleRes;

@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 
 import com.gdg.eventmanager.model.User;
 import com.gdg.eventmanager.util.PreferencesConstants;
-import com.google.gson.JsonObject;
 
 import java.io.IOException;
 
@@ -25,6 +24,7 @@ public class GDGApi {
     public static final String BASE_URL = "http://emjuizdefora.com/gdgjf/api/";
     private static final String X_API_USER_ID = "X-API-USER-ID";
     private static final String X_API_TOKEN = "X-API-TOKEN";
+    private static final String X_TOKEN = "X-TOKEN";
 
     private static GDGApi sInstance;
     private SharedPreferences mPreferences;
@@ -43,16 +43,29 @@ public class GDGApi {
                     int userId = mPreferences.getInt(PreferencesConstants.USER_ID, 0);
                     String apiMd5 = mPreferences.getString(PreferencesConstants.API_MD5, "");
 
-                    request.newBuilder()
+                    Request.Builder requestBuilder = request.newBuilder()
                             .addHeader(X_API_USER_ID, String.valueOf(userId))
-                            .addHeader(X_API_TOKEN, apiMd5)
-                            .build();
+                            .addHeader(X_API_TOKEN, apiMd5);
+                    if (mPreferences.contains(PreferencesConstants.X_TOKEN)) {
+                        String xToken = mPreferences.getString(PreferencesConstants.X_TOKEN, "");
+                        requestBuilder
+                                .addHeader(X_TOKEN, xToken)
+                                .build();
+                    } else {
+                        requestBuilder.build();
+                    }
                 }
 
                 Response response = chain.proceed(request);
                 return response;
             }
         }).build();
+
+//        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+//        logging.setLevel(Level.BASIC);
+//        OkHttpClient client = new OkHttpClient.Builder()
+//                .addInterceptor(logging)
+//                .build();
 
         Retrofit mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)

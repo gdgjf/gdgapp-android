@@ -1,16 +1,23 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 25
+    buildToolsVersion '25.0.3'
 
     defaultConfig {
-        applicationId "com.gdg.eventmanager"
+        applicationId "br.com.gdgjf"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -19,22 +26,43 @@ android {
     }
 }
 
+def support_version = "25.3.1"
+def constraint_version = "1.0.2"
+def retrofit_version = "2.2.0"
+def okhttp_version = "3.7.0"
+def rxandroid_version = "2.0.1"
+def rxjava_version = "2.0.9"
+def butterknife_version = "8.5.1"
+def timber_version = "4.5.1"
+def glide_version = "3.7.0"
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
-    compile 'com.android.support:support-v4:23.2.1'
-    compile 'com.android.support:support-annotations:23.2.1'
-    compile 'com.android.support:recyclerview-v7:23.2.1'
-    compile 'com.android.support:design:23.2.1'
+
+    compile "com.android.support:appcompat-v7:${support_version}"
+    compile "com.android.support:support-v4:${support_version}"
+    compile "com.android.support:support-annotations:${support_version}"
+    compile "com.android.support:recyclerview-v7:${support_version}"
+    compile "com.android.support:design:${support_version}"
+    compile "com.android.support.constraint:constraint-layout:${constraint_version}"
 
     // Code Helpers
-    compile 'com.jakewharton:butterknife:7.0.1'
+    compile "com.jakewharton:butterknife:${butterknife_version}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${butterknife_version}"
 
     // Http - Rest Requests
-    compile 'com.squareup.retrofit2:retrofit:2.0.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.0.0'
+    compile "com.squareup.retrofit2:retrofit:${retrofit_version}"
+    compile "com.squareup.retrofit2:converter-gson:${retrofit_version}"
+    compile "com.squareup.retrofit2:adapter-rxjava2:${retrofit_version}"
+    compile "com.squareup.okhttp3:logging-interceptor:${okhttp_version}"
+
+    // Reactive
+    compile "io.reactivex.rxjava2:rxandroid:${rxandroid_version}"
+    compile "io.reactivex.rxjava2:rxjava:${rxjava_version}"
+
+    // Logging
+    compile "com.jakewharton.timber:timber:${timber_version}"
 
     // image loader
-    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile "com.github.bumptech.glide:glide:${glide_version}"
 }
